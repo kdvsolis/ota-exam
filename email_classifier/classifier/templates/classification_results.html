@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Classification Results</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Classification</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for classification in classifications %}
+        <tr>
+          <td>{{ classification.content }}</td>
+          <td>{{ classification.is_newsletter }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
