@@ -12,10 +12,6 @@ class EmailClassifier:
         email_vectors = self.vectorizer.fit_transform(self.emails)
         self.classifier.fit(email_vectors, self.labels)
 
-    def is_newsletter(email):
-        keywords = ['unsubscribe', 'subscribe', 'opt out']
-        return any(keyword in email for keyword in keywords)
-
     def classify(self, email):
         email_vector = self.vectorizer.transform([email])
         return self.classifier.predict(email_vector)

@@ -11,10 +11,7 @@ def classify_emails(request):
         email_source = CSVEmailSource(csv_file)
         emails = email_source.read_emails()
 
-        def is_newsletter(email):
-            keywords = ['unsubscribe', 'subscribe', 'opt out']
-            return any(keyword in email for keyword in keywords)
-        labels = [is_newsletter(email) for email in emails]
+        labels = [email_source.is_newsletter(email) for email in emails]
 
         classifier = EmailClassifier(emails, labels)
         classifier.train()
